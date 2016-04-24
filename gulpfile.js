@@ -80,13 +80,18 @@ gulp.task('build:styles', function () {
 });
 
 gulp.task('build:templates', function() {
-    var root = '.tmp/build/';
-    var replaceRegex = /<link rel="import" type="css" href="(.*)">/g;
-    var replaceFn = function(link, href) {
-        var css = fs.readFileSync(path.resolve(root, href), 'utf8');
+    var cssRoot = '.tmp/build/';
+    var jsRoot = './src';
+    var replaceCssRegex = /<link rel="import" type="css" href="(.*)">/g;
+    var replaceJsRegex = /<script rel="import" src="(.*)"><\/script>/g;
+    var replaceCssFn = function(link, href) {
+        var css = fs.readFileSync(path.resolve(cssRoot, href), 'utf8');
         return '<style>\n' + css + '\n</style>';
     };
-
+    var replaceJsFn = function(script, src) {
+        var js = fs.readFileSync(path.resolve(jsRoot, src), 'utf8');
+        return '<script>\n' + js + '\n</script>';
+    };
     var renameFn = function (path) {
         path.basename = path.basename.replace(/\.template/g, '');
         return path;
@@ -94,7 +99,8 @@ gulp.task('build:templates', function() {
 
     return gulp
         .src(['src/**/*.template.html'])
-        .pipe(replace(replaceRegex, replaceFn))
+        .pipe(replace(replaceCssRegex, replaceCssFn))
+        .pipe(replace(replaceJsRegex, replaceJsFn))
         .pipe(rename(renameFn))
         .pipe(gulp.dest('.tmp/build'));
 });

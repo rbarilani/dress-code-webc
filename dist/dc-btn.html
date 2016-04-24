@@ -1,0 +1,398 @@
+<!-- Defines element markup -->
+<template>
+    <style>
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0; }
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block; }
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline; }
+
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+[hidden],
+template {
+  display: none; }
+
+a {
+  background-color: transparent; }
+
+a:active,
+a:hover {
+  outline: 0; }
+
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+b,
+strong {
+  font-weight: bold; }
+
+dfn {
+  font-style: italic; }
+
+h1 {
+  margin: .67em 0;
+  font-size: 2em; }
+
+mark {
+  background: #ff0;
+  color: #000; }
+
+small {
+  font-size: 80%; }
+
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline; }
+
+sup {
+  top: -.5em; }
+
+sub {
+  bottom: -.25em; }
+
+img {
+  border: 0; }
+
+svg:not(:root) {
+  overflow: hidden; }
+
+figure {
+  margin: 1em 40px; }
+
+hr {
+  height: 0;
+  box-sizing: content-box; }
+
+pre {
+  overflow: auto; }
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em; }
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  color: inherit;
+  font: inherit; }
+
+button {
+  overflow: visible; }
+
+button,
+select {
+  text-transform: none; }
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button; }
+
+button[disabled],
+html input[disabled] {
+  cursor: default; }
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0; }
+
+input {
+  line-height: normal; }
+
+input[type="checkbox"],
+input[type="radio"] {
+  padding: 0;
+  box-sizing: border-box; }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  box-sizing: content-box; }
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+fieldset {
+  margin: 0 2px;
+  padding: .35em .625em .75em;
+  border: 1px solid #c0c0c0; }
+
+legend {
+  padding: 0;
+  border: 0; }
+
+textarea {
+  overflow: auto; }
+
+optgroup {
+  font-weight: bold; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td,
+th {
+  padding: 0; }
+
+:host {
+  font-family: "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif; }
+
+.dc-btn {
+  display: inline-block;
+  margin-right: 0.4rem;
+  padding: 1.1rem 1.2rem;
+  transition: box-shadow .2s linear, border-color .2s linear;
+  border: 1px solid #b6b6b6;
+  border-radius: 2px;
+  background: linear-gradient(#fff, #ededed);
+  color: #4a4a4a;
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  box-shadow: 0 1px 1px transparent;
+  cursor: default;
+  vertical-align: top; }
+  .dc-btn:focus {
+    outline: none; }
+
+.no-touch .dc-btn:hover {
+  outline: 0;
+  background: linear-gradient(#fff, #f2f2f2);
+  color: #4a4a4a;
+  text-decoration: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); }
+
+.no-touch .dc-btn:active {
+  background: whitesmoke;
+  color: #4a4a4a;
+  text-decoration: none;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1); }
+
+.touch .dc-btn:active {
+  background: whitesmoke;
+  color: #4a4a4a;
+  text-decoration: none;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1); }
+
+.dc-btn--link {
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid transparent;
+  color: #26aafe;
+  transition: color .1s linear; }
+
+.touch .dc-btn--link:active {
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid transparent;
+  color: #1e87cb; }
+
+.no-touch .dc-btn--link:hover {
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid transparent;
+  color: #1e87cb; }
+
+.dc-btn--primary {
+  border-color: #029cfe;
+  background: linear-gradient(#26aafe, #029cfe);
+  color: #fff; }
+
+.no-touch .dc-btn--primary:hover {
+  background: #35b0fe;
+  color: #fff; }
+
+.touch .dc-btn-primary:active {
+  background: #35b0fe;
+  color: #fff; }
+
+.dc-btn--destroy {
+  transition: box-shadow .2s linear; }
+
+.no-touch .dc-btn--destroy:hover {
+  border-color: #ff4a25;
+  background: #ff6c4f;
+  color: #fff; }
+
+.touch .dc-btn--destroy:active {
+  border-color: #ff4a25;
+  background: #ff6c4f;
+  color: #fff; }
+
+.dc-btn--disabled {
+  border-color: #d1d1d1;
+  background: transparent;
+  color: #b6b6b6;
+  box-shadow: none; }
+
+.touch .dc-btn--disabled:active {
+  border-color: #d1d1d1;
+  background: transparent;
+  color: #b6b6b6;
+  box-shadow: none; }
+
+.no-touch .dc-btn--disabled:hover {
+  border-color: #d1d1d1;
+  background: transparent;
+  color: #b6b6b6;
+  box-shadow: none; }
+
+.dc-btn--small {
+  padding: 1.1rem 1.2rem;
+  font-size: 1.4rem; }
+
+.no-touch .dc-btn--small {
+  padding: 0.4rem 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+  text-transform: uppercase; }
+
+.dc-btn--inline {
+  margin-bottom: 0; }
+  .dc-btn--inline + .dc-btn--inline {
+    margin-left: .2rem; }
+
+.dc-btn--large {
+  padding: 1.6rem 1.6rem 1.7rem;
+  font-size: 1.8rem;
+  line-height: .8; }
+
+.dc-btn--block {
+  display: block;
+  width: 100%; }
+
+.dc-btn--link.dc-btn--disabled {
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid transparent;
+  color: #b6b6b6; }
+  .dc-btn--link.dc-btn--disabled:hover, .dc-btn--link.dc-btn--disabled:active {
+    border: 1px solid transparent; }
+
+.no-touch.dc-btn--primary:hover {
+  background: #35b0fe;
+  color: #fff; }
+
+.no-touch.dc-btn--destroy:hover {
+  border-color: #ff4a25;
+  background: #ff6c4f;
+  color: #fff; }
+
+</style>
+    <button class="dc-btn no-touch"><content></content></button>
+</template>
+
+<script>
+    (function(window, document, undefined) {
+        // Refers to the "importer", which is index.html
+        var thatDoc = document;
+
+        // Refers to the "imported", which is dc-btn/dc-btn.html
+        var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
+
+        // Gets content from <template>
+        var template = thisDoc.querySelector('template').content;
+
+        // Creates an object based in the HTML Element prototype
+        var DcBtn = Object.create(HTMLElement.prototype);
+
+        // Creates the "modifiers" attribute and sets a default value
+        DcBtn.modifiers = '';
+
+        // Fires when an instance of the element is created
+        DcBtn.createdCallback = function() {
+            // Creates the shadow root
+            var shadowRoot = this.createShadowRoot();
+            // Adds a template clone into shadow root
+            var clone = thatDoc.importNode(template, true);
+            shadowRoot.appendChild(clone);
+
+            // Caches <button> DOM query
+            this.button = shadowRoot.querySelector('button');
+
+            // Checks if the "modifiers" attribute has been overwritten
+            if (this.hasAttribute('modifiers')) {
+                var modifiers = this.getAttribute('modifiers');
+                this.setModifiers(modifiers);
+            }
+            else {
+                this.setModifiers(this.modifiers);
+            }
+        };
+        // Fires when an attribute was added, removed, or updated
+        DcBtn.attributeChangedCallback = function(attr, oldVal, newVal) {
+            if (attr === 'modifiers') {
+                this.setModifiers(newVal);
+            }
+        };
+
+        DcBtn.modifierClass = function (modifier) {
+            return 'dc-btn--'+ modifier.trim();
+        };
+
+        DcBtn.updatesModifiersClasses = function (modifiers, action) {
+            modifiers.split(' ').forEach(function (modifier) {
+                this.button.classList[action](this.modifierClass(modifier));
+            }.bind(this));
+        };
+
+        // Sets new value to "modifiers" attribute
+        DcBtn.setModifiers = function(newVal) {
+            this.updatesModifiersClasses(this.modifiers, 'remove'); // remove old modifiers
+            this.updatesModifiersClasses(newVal, 'add'); // add new modifiers
+            this.modifiers = newVal;
+        };
+
+        // Registers <dc-btn> in the main document
+        thatDoc.registerElement('dc-btn', {
+            prototype: DcBtn
+        });
+    })(window, document);
+</script>

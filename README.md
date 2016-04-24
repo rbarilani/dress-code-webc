@@ -27,7 +27,7 @@ npm install dress-code-webc --save
 </head>
 <body>
     <!-- use custom html element -->
-    <dc-btn modifiers="primary large">My Button<dc-btn>
+    <dc-btn modifiers="primary large">My Button</dc-btn>
 </body>
 </html>
 ```

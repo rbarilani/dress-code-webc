@@ -16,7 +16,6 @@ gulp.task('serve', function (done) {
     return runSequence('default', 'demo:serve', done);
 });
 
-
 /**
  *
  *
@@ -27,17 +26,18 @@ gulp.task('serve', function (done) {
  *
  */
 gulp.task('demo', function (done) {
-    return runSequence('demo:styles', 'demo:dress-code-webc', done);
+    return runSequence('demo:styles', 'demo:copy-dist', done);
 });
 
 gulp.task('demo:styles', function () {
     return gulp
         .src('demo/index.scss')
         .pipe(sass())
-        .pipe(gulp.dest('demo'));
+        .pipe(gulp.dest('demo'))
+        .pipe(browserSync.stream());
 });
 
-gulp.task('demo:dress-code-webc', function () {
+gulp.task('demo:copy-dist', function () {
     gulp.src('dist/*.html')
         .pipe(gulp.dest(path.join('demo/', pkg.name)));
 });
@@ -50,7 +50,18 @@ gulp.task('demo:serve', function() {
             baseDir: "./demo"
         }
     });
+
+    // build
+    gulp.watch('./src/**/*.scss', ['build:styles']);
+    gulp.watch(['./.tmp/build/**/*.css', './src/**/*.template.html'], ['build:templates']);
+    gulp.watch('./.tmp/build/**/*.html', ['build:copy']);
+
+    // demo
+    gulp.watch('demo/index.scss', ['demo:styles']);
+    gulp.watch('dist/**/*.html', ['demo:copy-dist']);
+    gulp.watch('demo/**/*.html').on('change', browserSync.reload);
 });
+
 /**
  *
  *
@@ -64,7 +75,7 @@ gulp.task('build', function (done) {
   return runSequence('build:styles', 'build:templates', 'build:copy', done);
 });
 
-gulp.task('build:copy', function (done) {
+gulp.task('build:copy', function () {
     return gulp.src('.tmp/build/**/*.html')
         .pipe(rename(function (path) {
             path.dirname = '';

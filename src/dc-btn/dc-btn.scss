@@ -1,0 +1,13 @@
+@import "../../node_modules/breakpoint-sass/stylesheets/breakpoint";
+@import "../../node_modules/dress-code/dist/sass/dress-code";
+
+@include dc-normalize;
+
+:host {
+    font-family: "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+@include dc-btn-selectors;
+
+.no-touch.dc-btn--primary {  @include dc-btn--primary--no-touch;  }
+.no-touch.dc-btn--destroy {  @include dc-btn--destroy--no-touch;  }

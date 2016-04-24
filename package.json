@@ -1,0 +1,29 @@
+{
+  "name": "dress-code-webc",
+  "version": "0.0.0",
+  "description": "A set of web components based on Dress Code style library",
+  "main": "dress-code-webcomponents.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp serve",
+    "build": "gulp"
+  },
+  "keywords": [
+    "WebComponents",
+    "zalando/dress-code",
+    "BEM"
+  ],
+  "author": "Ruben Barilani",
+  "license": "MIT",
+  "dependencies": {
+    "dress-code": "^2.0.0-alpha"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.12.3",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "^2.3.1",
+    "run-sequence": "^1.1.5"
+  }
+}

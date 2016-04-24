@@ -1,6 +1,8 @@
 .tmp
 dist
-demo/dress-code-webc
+demo/*
+!demo/index.scss
+!demo/index.html
 
 # -- Bower -- #
 *bower_components

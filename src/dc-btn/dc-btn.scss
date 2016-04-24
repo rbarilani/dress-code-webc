@@ -3,9 +3,7 @@
 
 @include dc-normalize;
 
-:host {
-    font-family: "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-}
+:host {  font-family: $dc-base-font-family; }
 
 @include dc-btn-selectors;
 

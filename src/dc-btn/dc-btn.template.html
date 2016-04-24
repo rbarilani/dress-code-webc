@@ -6,7 +6,6 @@
 
 <script>
     (function(window, document, undefined) {
-
         // Refers to the "importer", which is index.html
         var thatDoc = document;
 
@@ -33,7 +32,7 @@
             // Caches <button> DOM query
             this.button = shadowRoot.querySelector('button');
 
-            // Checks if the "who" attribute has been overwritten
+            // Checks if the "modifiers" attribute has been overwritten
             if (this.hasAttribute('modifiers')) {
                 var modifiers = this.getAttribute('modifiers');
                 this.setModifiers(modifiers);
@@ -59,15 +58,15 @@
             }.bind(this));
         };
 
-        // Sets new value to "who" attribute
+        // Sets new value to "modifiers" attribute
         DcBtn.setModifiers = function(newVal) {
             this.updatesModifiersClasses(this.modifiers, 'remove'); // remove old modifiers
             this.updatesModifiersClasses(newVal, 'add'); // add new modifiers
             this.modifiers = newVal;
         };
 
-        // Registers <hello-world> in the main document
-        /*window.MyElement = */ thatDoc.registerElement('dc-btn', {
+        // Registers <dc-btn> in the main document
+        thatDoc.registerElement('dc-btn', {
             prototype: DcBtn
         });
     })(window, document);
